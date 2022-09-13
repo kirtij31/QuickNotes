@@ -18,10 +18,18 @@ class NoteViewModel(application: Application): AndroidViewModel(application) {
         allNotes = repository.allNotes
     }
 
-    fun deleteNote(note: Note) = viewModelScope.launch(Dispatchers.IO) {
-        repository.delete(note)
+    fun deleteNote() = viewModelScope.launch(Dispatchers.IO) {
+        repository.delete()
     }
     fun insertNote(note: Note) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(note)
+    }
+
+    fun setSelectionStatusTrue(note: Note) = viewModelScope.launch(Dispatchers.IO){
+        repository.setSelectionStatusTrue(note)
+    }
+
+    fun setSelectionStatusFalse(note: Note) = viewModelScope.launch(Dispatchers.IO){
+        repository.setSelectionStatusFalse(note)
     }
 }
