@@ -1,4 +1,4 @@
-package com.example.quicknotes
+package com.notes.quicknotes
 
 import org.junit.Test
 

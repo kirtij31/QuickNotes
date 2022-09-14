@@ -1,4 +1,4 @@
-package com.example.quicknotes
+package com.notes.quicknotes
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -18,11 +18,22 @@ class NoteViewModel(application: Application): AndroidViewModel(application) {
         allNotes = repository.allNotes
     }
 
-    fun deleteNote() = viewModelScope.launch(Dispatchers.IO) {
-        repository.delete()
-    }
+
     fun insertNote(note: Note) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(note)
+    }
+
+    fun deleteNote(id:Int) = viewModelScope.launch(Dispatchers.IO) {
+        repository.delete(id)
+    }
+
+
+     fun update(text:String, title :String, id:Int) = viewModelScope.launch(Dispatchers.IO){
+        repository.update(text,title,id)
+    }
+
+     fun deleteSelectedNote() = viewModelScope.launch(Dispatchers.IO) {
+        repository.deleteSelected()
     }
 
     fun setSelectionStatusTrue(note: Note) = viewModelScope.launch(Dispatchers.IO){
@@ -31,5 +42,9 @@ class NoteViewModel(application: Application): AndroidViewModel(application) {
 
     fun setSelectionStatusFalse(note: Note) = viewModelScope.launch(Dispatchers.IO){
         repository.setSelectionStatusFalse(note)
+    }
+
+    fun setSelectionStatusFalseForAll()= viewModelScope.launch(Dispatchers.IO){
+        repository.setSelectionStatusFalseForAll()
     }
 }

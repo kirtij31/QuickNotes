@@ -1,4 +1,4 @@
-package com.example.quicknotes
+package com.notes.quicknotes
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
