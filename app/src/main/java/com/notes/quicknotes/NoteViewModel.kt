@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -11,11 +12,13 @@ class NoteViewModel(application: Application): AndroidViewModel(application) {
 
     private val repository :NoteRepository
      val allNotes : LiveData<List<Note>>
+     val tableSize : LiveData<Int>
 
     init{
         val dao = NoteDatabase.getDatabase(application).getNoteDao()
          repository = NoteRepository(dao)
         allNotes = repository.allNotes
+        tableSize = repository.tableSize
     }
 
 

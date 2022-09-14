@@ -14,7 +14,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:theme="@style/ToolbarTheme"
             app:menu="@menu/toolbar_menu"
-        />
+        android:elevation="200dp"
+        android:outlineAmbientShadowColor="@color/black"/>
 
 
     <EditText
@@ -28,7 +29,6 @@
         android:hint="@string/title"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textColorHint="#78909C"
         android:textSize="32sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -45,7 +45,6 @@
         android:hint="@string/start_typing"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textColorHint="#546E7A"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/inputTitle" />

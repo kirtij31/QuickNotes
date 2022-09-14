@@ -14,8 +14,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:cardCornerRadius="10dp"
-            android:soundEffectsEnabled="false"
-            >
+            android:soundEffectsEnabled="false">
 
     <LinearLayout
 

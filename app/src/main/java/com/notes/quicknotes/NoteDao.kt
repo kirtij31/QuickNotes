@@ -24,6 +24,9 @@ interface NoteDao {
     @Query("SELECT * FROM notes_table ORDER BY id ASC")
     fun getALLNoteS():LiveData<List<Note>>
 
+    @Query("SELECT COUNT(*) FROM notes_table")
+    fun tableSize():LiveData<Int>
+
 
     @Query("UPDATE notes_table SET selected = 'true' WHERE id = :id")
     suspend fun setSelectionStatusTrue( id: Int)

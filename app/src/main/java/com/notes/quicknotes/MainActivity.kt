@@ -14,8 +14,6 @@ lateinit var viewModel: NoteViewModel
   var isLongPressed = false
   var isPressed = false
 
-lateinit var adapter : NotesRVAdapter
-
 
 
 class MainActivity : AppCompatActivity() , INotesRVAdapter {
@@ -24,7 +22,7 @@ class MainActivity : AppCompatActivity() , INotesRVAdapter {
         setContentView(R.layout.activity_main)
 
         recyclerView.layoutManager =    StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        adapter = NotesRVAdapter(this,this)
+        val adapter = NotesRVAdapter(this,this)
         recyclerView.adapter = adapter
 
 
@@ -32,6 +30,16 @@ class MainActivity : AppCompatActivity() , INotesRVAdapter {
         viewModel.allNotes.observe(this) { list ->
             list?.let { adapter.updateList(it) }
 
+        }
+
+        viewModel.tableSize.observe(this){size->
+        if(size ==0){
+            initialText.visibility = View.VISIBLE
+            recyclerView.visibility = View.GONE}
+        else{
+            initialText.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+        }
         }
 
         bottomNavigationView.setOnItemSelectedListener { item->
@@ -83,10 +91,6 @@ class MainActivity : AppCompatActivity() , INotesRVAdapter {
         floating_add.visibility = View.GONE
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        adapter.notifyDataSetChanged()
-    }
 
 
 }

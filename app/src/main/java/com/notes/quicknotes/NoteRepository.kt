@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 class NoteRepository(private val noteDao :NoteDao) {
 
     val allNotes: LiveData<List<Note>> = noteDao.getALLNoteS()
+    val tableSize :LiveData<Int> = noteDao.tableSize()
 
     suspend fun insert(note: Note) {
         noteDao.insert(note)
@@ -18,6 +19,7 @@ class NoteRepository(private val noteDao :NoteDao) {
     suspend fun update(text:String, title :String, id:Int){
         noteDao.update(text,title,id)
     }
+
 
     suspend fun deleteSelected() {
         noteDao.deleteSelected()
